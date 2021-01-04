@@ -20,7 +20,7 @@ Menu :: Menu(std::string filePath) {
 			int iterations = 0;
 
 			while (std::getline(stringStream, word, ',')) {
-
+				// TODO: Implement Item creation into Switch case
 				switch (iterations) {
 
 				case 0:
@@ -91,6 +91,8 @@ Menu :: Menu(std::string filePath) {
 					item.twoForOne = false;
 				}
 
+				items.push_back(&item);
+
 				std::cout << item.toString() << std::endl;
 			}
 			else if (attributes[0] == "m") {
@@ -98,6 +100,8 @@ Menu :: Menu(std::string filePath) {
 				item.name = attributes[1];
 				item.price = std::stof(attributes[2]);
 				item.calories = std::stoi(attributes[3]);
+
+				items.push_back(&item);
 
 				std::cout << item.toString() << std::endl;
 			}
@@ -107,7 +111,9 @@ Menu :: Menu(std::string filePath) {
 				item.price = std::stof(attributes[2]);
 				item.calories = std::stoi(attributes[3]);
 				item.volume = std::stoi(attributes[6]);
-				item.abv = std::stof(attributes[7]);
+				item.abv = std::stof(attributes[7]); 
+
+				items.push_back(&item);
 
 				std::cout << item.toString() << std::endl;
 			}
