@@ -7,7 +7,7 @@
 class Menu : ItemList {
 
 public:
-	std::string toString() { return "done"; };
+	std::string toString();
 	
 	Menu(std::string filePath);
 };

@@ -10,4 +10,6 @@ using namespace std;
 
 int main() {
 	Menu menu = Menu("menu.csv");
+
+	std::cout << menu.toString() << std::endl;
 }

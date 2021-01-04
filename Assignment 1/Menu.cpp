@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <iterator>
 
 Menu :: Menu(std::string filePath) {
 
@@ -74,51 +75,60 @@ Menu :: Menu(std::string filePath) {
 			}
 
 			if (attributes[0] == "a") {
-				Appetiser item;
-				item.name = attributes[1];
-				item.price = std::stof(attributes[2]);
-				item.calories = std::stoi(attributes[3]);
+				Appetiser *item = new Appetiser;
+				(*item).name = attributes[1];
+				(*item).price = std::stof(attributes[2]);
+				(*item).calories = std::stoi(attributes[3]);
 				if (attributes[4] == "y") {
-					item.shareable = true;
+					(*item).shareable = true;
 				}
 				else {
-					item.shareable = false;
+					(*item).shareable = false;
 				}
 				if (attributes[5] == "y") {
-					item.twoForOne = true;
+					(*item).twoForOne = true;
 				}
 				else {
-					item.twoForOne = false;
+					(*item).twoForOne = false;
 				}
 
-				items.push_back(&item);
-
-				std::cout << item.toString() << std::endl;
+				items.push_back(item);
 			}
 			else if (attributes[0] == "m") {
-				MainCourse item;
-				item.name = attributes[1];
-				item.price = std::stof(attributes[2]);
-				item.calories = std::stoi(attributes[3]);
+				MainCourse *item = new MainCourse;
+				(*item).name = attributes[1];
+				(*item).price = std::stof(attributes[2]);
+				(*item).calories = std::stoi(attributes[3]);
 
-				items.push_back(&item);
-
-				std::cout << item.toString() << std::endl;
+				items.push_back(item);
 			}
 			else if (attributes[0] == "b") {
-				Beverage item;
-				item.name = attributes[1];
-				item.price = std::stof(attributes[2]);
-				item.calories = std::stoi(attributes[3]);
-				item.volume = std::stoi(attributes[6]);
-				item.abv = std::stof(attributes[7]); 
+				Beverage *item = new Beverage;
+				(*item).name = attributes[1];
+				(*item).price = std::stof(attributes[2]);
+				(*item).calories = std::stoi(attributes[3]);
+				(*item).volume = std::stoi(attributes[6]);
+				(*item).abv = std::stof(attributes[7]);
 
-				items.push_back(&item);
-
-				std::cout << item.toString() << std::endl;
+				items.push_back(item);
 			}
 			
 			attributes.clear();
 		}
 	}
+}
+
+std::string Menu :: toString() {
+	std::string menu;
+
+	menu + "----------------Appetisers----------------";
+
+	for (auto& iter: this->items) {
+		Item item = *iter;
+
+		std::cout << item.name << std::endl;
+		
+	}
+
+	return menu;
 }
