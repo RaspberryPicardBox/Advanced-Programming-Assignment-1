@@ -2,32 +2,36 @@
 #include <string>
 
 class Item {
+public: 
 	int calories;
 	std::string name;
 	float price;
 
-public: 
-	virtual std::string toString() {};
+	virtual std::string toString() { return { name + "," + std::to_string(price) + "," + std::to_string(calories) }; };
 };
 
-class Appetiser : Item {
+class Appetiser : public Item {
+public:
 	bool shareable;
 	bool twoForOne;
 
+	std::string toString() {
+		return { name + "," + std::to_string(price) + "," + std::to_string(calories) + "," + std::to_string(shareable) + "," + std::to_string(twoForOne) };
+	};
+};
+
+class MainCourse : public Item {
+
+};
+
+class Beverage : public Item {
 public:
-	std::string toString() {};
-};
-
-class MainCourse : Item {
-
-};
-
-class Beverage : Item {
-	float abd;
+	float abv;
 	int volume;
 
-public:
 	bool isAlcoholic{};
 
-	std::string toString() {};
+	std::string toString() {
+		return { name + "," + std::to_string(price) + "," + std::to_string(calories) + "," + std::to_string(volume) + "," + std::to_string(abv) };
+	};
 };
