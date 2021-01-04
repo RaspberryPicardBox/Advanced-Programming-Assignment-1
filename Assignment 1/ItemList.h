@@ -6,7 +6,7 @@
 class ItemList {
 	std::list<Item*> items;
 
-	std::string toString() {
+	virtual std::string toString() {
 
 	};
 };
