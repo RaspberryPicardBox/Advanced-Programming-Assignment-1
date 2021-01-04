@@ -6,25 +6,36 @@ class Item {
 	std::string name;
 	float price;
 
-	std::string toString {
+public: 
+	virtual std::string toString() {
 
 	};
 };
 
-class Appetiser {
+class Appetiser : Item {
 	bool shareable;
 	bool twoForOne;
+
+public:
+	std::string toString() {
+
+	};
 };
 
-class MainCourse {
+class MainCourse : Item {
 
 };
 
-class Beverage {
+class Beverage : Item {
 	float abd;
 	int volume;
 
+public:
 	bool isAlcoholic{
+
+	};
+
+	std::string toString() {
 
 	};
 };
