@@ -120,14 +120,32 @@ Menu :: Menu(std::string filePath) {
 
 std::string Menu :: toString() {
 	std::string menu;
+	int iterator = 0;
 
-	menu + "----------------Appetisers----------------";
+	std::cout << "----------------Appetisers----------------" << std::endl;
 
 	for (auto& iter: this->items) {
+		Item item = *iter; // TODO: Check type of item and change to type depending
+
+		if (iterator < 3) {
+			std::cout << "(" << iterator << ") " << item.name + ": " << '\x9c' << item.price << ", " << item.calories /*<< " " << item.shareable*/ << std::endl; // TODO: This piece doesn't work due to type mismatch
+		}
+
+		iterator++;
+	}
+
+	iterator = 0;
+
+	std::cout << "----------------Main dishes----------------" << std::endl;
+
+	for (auto& iter : this->items) {
 		Item item = *iter;
 
-		std::cout << item.name << std::endl;
-		
+		if (iterator > 2 && iterator < 7) {
+			std::cout << "(" << iterator << ") " << item.name + ": " << '\x9c' << item.price << ", " << item.calories << std::endl;
+		}
+
+		iterator++;
 	}
 
 	return menu;
