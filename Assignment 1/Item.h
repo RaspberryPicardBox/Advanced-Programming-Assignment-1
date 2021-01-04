@@ -7,9 +7,7 @@ class Item {
 	float price;
 
 public: 
-	virtual std::string toString() {
-
-	};
+	virtual std::string toString() {};
 };
 
 class Appetiser : Item {
@@ -17,9 +15,7 @@ class Appetiser : Item {
 	bool twoForOne;
 
 public:
-	std::string toString() {
-
-	};
+	std::string toString() {};
 };
 
 class MainCourse : Item {
@@ -31,11 +27,7 @@ class Beverage : Item {
 	int volume;
 
 public:
-	bool isAlcoholic{
+	bool isAlcoholic{};
 
-	};
-
-	std::string toString() {
-
-	};
+	std::string toString() {};
 };

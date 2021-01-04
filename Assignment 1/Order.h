@@ -7,15 +7,9 @@ class Order : ItemList {
 	int total;
 
 public:
-	int calculateTotal() {
+	int calculateTotal() {};
 
-	};
+	std::string printReceipt() {};
 
-	std::string printReceipt() {
-
-	};
-
-	std::string toString() {
-
-	};
+	std::string toString() {};
 };
