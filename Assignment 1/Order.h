@@ -13,7 +13,6 @@ public:
 	void remove(int selection);
 
 	int calculateTotal();
-
 	void printReceipt();
 
 	std::string toString();

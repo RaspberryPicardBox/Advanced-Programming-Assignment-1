@@ -65,7 +65,6 @@ std::string Order::toString() {
 
 		iterator++;
 	}
-
 	return orderOut;
 }
 

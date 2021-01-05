@@ -164,6 +164,5 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 		iterator++;
 	}
-	
 	return menu;
 }
