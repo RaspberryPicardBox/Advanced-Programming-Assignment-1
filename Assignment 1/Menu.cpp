@@ -152,14 +152,14 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 	std::cout << "----------------Appetisers----------------" << std::endl;
 
 	for (auto& iter: this->items) {
-		Item item = *iter; // TODO: Check type of item and change to type depending
+		Item item = *iter;
 
 		bool shareable = item.shareable;
 		bool twoForOne = item.twoForOne;
 
 		if (iterator < 3) {
 
-			std::cout << "(" << iterator + 1 << ") " << item.name + ": " << '\x9c' << item.price << ", " << item.calories << " cal "; // TODO: This piece doesn't work due to type mismatch
+			std::cout << "(" << iterator + 1 << ") " << item.name + ": " << '\x9c' << item.price << ", " << item.calories << " cal ";
 
 			if (shareable) {
 				std::cout << "(shareable) ";
