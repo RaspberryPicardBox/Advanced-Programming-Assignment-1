@@ -7,6 +7,10 @@ class Order : ItemList {
 	int total;
 
 public:
+
+	void add(int selection) {};
+	void remove(int selection) {};
+
 	int calculateTotal() {};
 
 	std::string printReceipt() {};

@@ -6,6 +6,6 @@
 
 class ItemList {
 public:
-	std::list<Item*> items;
+	std::list<Item*> items; // TODO: Possibly create seperate lists for different types of items? Would allow for auto-sorting of menu
 	virtual std::string toString() = 0;
 };
