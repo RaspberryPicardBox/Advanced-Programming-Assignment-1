@@ -13,6 +13,8 @@ public:
 	float abv;
 	int volume;
 
+	std::string type;
+
 	virtual std::string toString() { return { name + "," + std::to_string(price) + "," + std::to_string(calories) }; }; // TODO: Return only two decimal places
 };
 

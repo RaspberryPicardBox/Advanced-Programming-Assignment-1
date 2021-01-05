@@ -5,15 +5,16 @@
 
 class Order : ItemList {
 	int total;
+	std::list<Item*> orderList;
 
 public:
 
-	void add(int selection) {};
-	void remove(int selection) {};
+	void add(int selection);
+	void remove(int selection);
 
-	int calculateTotal() {};
+	int calculateTotal();
 
-	std::string printReceipt() {};
+	void printReceipt();
 
-	std::string toString() {};
+	std::string toString();
 };
