@@ -7,6 +7,12 @@ public:
 	std::string name;
 	float price = 0;
 
+	bool shareable;
+	bool twoForOne;
+
+	float abv;
+	int volume;
+
 	virtual std::string toString() { return { name + "," + std::to_string(price) + "," + std::to_string(calories) }; }; // TODO: Return only two decimal places
 };
 
