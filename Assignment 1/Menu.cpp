@@ -91,8 +91,9 @@ Menu :: Menu(std::string filePath) {
 				}
 				iterations++;
 			}
-			items.push_back(item);
+			menuList.push_back(item);
 		}
+		ItemList::setItems(menuList);
 	}
 }
 

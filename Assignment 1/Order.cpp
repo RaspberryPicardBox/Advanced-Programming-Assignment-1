@@ -4,7 +4,8 @@
 
 void Order::add(int selection){
 	int iterator = 1;
-	for (auto& iter : items) {
+
+	for (auto& iter : ItemList::getItems()) {
 		Item item = *iter;
 		if (iterator == selection) {
 			orderList.push_back(&item);
