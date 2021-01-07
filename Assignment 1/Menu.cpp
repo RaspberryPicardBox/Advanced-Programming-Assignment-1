@@ -20,7 +20,7 @@ Menu :: Menu(std::string filePath) {
 			
 			int iterations = 0;
 
-			Item* item = new Item;
+			Item* item{};
 
 			while (std::getline(stringStream, word, ',')) {
 				switch (iterations) {
@@ -103,23 +103,20 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Appetisers----------------\n";
 
-	for (auto& iter: items) {
-		Item item = *iter;
+	for (auto& iter: menuList) {
+		Item (*item) = iter;
 
-		bool shareable = item.shareable;
-		bool twoForOne = item.twoForOne;
+		bool shareable = (*item).shareable;
+		bool twoForOne = (*item).twoForOne;
 
-		if (item.type == "a") {
-
-			menu += "(" + std::to_string(iterator + 1) + ") " + item.name + ": " + '\x9c' + std::to_string(item.price) + ", " + std::to_string(item.calories) + " cal ";
-
-			if (shareable) {
+		if ((*item).type == "a") {
+			menu += (*item).toString();
+			if ((*item).shareable == true) {
 				menu += "(shareable) ";
 			}
-			if (twoForOne) {
+			if ((*item).twoForOne == true) {
 				menu += "(2-4-1) ";
 			}
-
 			menu += "\n";
 		}
 
@@ -130,11 +127,11 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Main dishes----------------\n";
 
-	for (auto& iter : items) {
-		Item item = *iter;
+	for (auto& iter : menuList) {
+		Item (*item) = iter;
 
-		if (item.type == "m") {
-			menu += "(" + std::to_string(iterator + 1) + ") " + item.name + ": " + '\x9c' + std::to_string(item.price) + ", " + std::to_string(item.calories) + " cal\n";
+		if ((*item).type == "m") {
+			menu += (*item).toString() + "\n";
 		}
 
 		iterator++;
@@ -144,21 +141,21 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Beverages----------------\n";
 
-	for (auto& iter : items) {
-		Item item = *iter;
+	for (auto& iter : menuList) {
+		Item(*item) = iter;
 
-		int volume = item.volume;
-		float abv = item.abv;
+		int volume = (*item).volume;
+		float abv = (*item).abv;
 
-		if (item.type == "b") {
+		if ((*item).type == "b") {
 
-			menu += "(" + std::to_string(iterator + 1) + ") " + item.name + ": " + '\x9c' + std::to_string(item.price) + ", " + std::to_string(item.calories) + " cal ";
+			menu += (*item).toString();
 
-			if (abv > 0) {
-				menu += "(" + std::to_string(volume) + "ml, " + std::to_string(abv) + "% abv)\n";
+			if (abv == 0) {
+				menu += "(" + std::to_string((*item).volume) + "ml)\n";
 			}
 			else {
-				menu += "(" + std::to_string(volume) + "ml)\n";
+				menu += "(" + std::to_string((*item).volume) + "ml, " + std::to_string((*item).abv) + "% abv)\n";
 			}
 		}
 

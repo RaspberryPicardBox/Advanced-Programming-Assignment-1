@@ -15,7 +15,7 @@ public:
 
 	std::string type;
 
-	virtual std::string toString() { return { name + "," + std::to_string(price) + "," + std::to_string(calories) }; }; // TODO: Return only two decimal places
+	std::string toString() { return { name + ": " + '\x9c' + std::to_string(price) + ", " + std::to_string(calories) + " cal " }; };
 };
 
 class Appetiser : public Item {
@@ -23,13 +23,9 @@ public:
 	bool shareable = false;
 	bool twoForOne = false;
 
-	std::string toString() {
-		return { name + "," + std::to_string(price) + "," + std::to_string(calories) + "," + std::to_string(shareable) + "," + std::to_string(twoForOne) };
-	};
 };
 
 class MainCourse : public Item {
-
 };
 
 class Beverage : public Item {
@@ -39,7 +35,4 @@ public:
 
 	bool isAlcoholic{};
 
-	std::string toString() {
-		return { name + "," + std::to_string(price) + "," + std::to_string(calories) + "," + std::to_string(volume) + "," + std::to_string(abv) };
-	};
 };
