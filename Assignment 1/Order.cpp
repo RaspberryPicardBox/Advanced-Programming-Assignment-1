@@ -1,25 +1,52 @@
 #include "Order.h"
 #include "Item.h"
 #include <iostream>
+#include<vector>
 
 void Order::add(Item* selection){
 	orderList.push_back(selection);
-	std::cout << selection->name << " added to order!" << std::endl;
+	std::cout << selection->name << " added to order!\n" << std::endl;
 }
 
 void Order::remove(Item* selection) {
 	orderList.remove(selection);
-	std::cout << selection->name << " removed from order!" << std::endl;
+	std::cout << selection->name << " removed from order!\n" << std::endl;
 }
 
-int Order::calculateTotal() {
-	int total = 0;
+float Order::calculateTotal() {
+	float total = 0;
+	int twoForOneItems = 0;
+
+	twoForOneFlag = false;
+	twoForOneTotal = 0;
+
+	for (auto& iter : orderList) {
+		Item* (*item) = &iter;
+
+		if ((*item)->twoForOne == true) {
+			twoForOneItems++;
+
+			if (twoForOneItems > 1) {
+				twoForOneFlag = true;
+				twoForOneItems = 0;
+				total += 3.99;
+				twoForOneTotal += 3.99;
+			}
+		}
+		else {
+			total += (*item)->price;
+		}
+
+	}
+
 	return total;
 }
 
 std::string Order::toString() {
 	std::string orderOut;
-	int iterator = 0;
+	int iterator = 1;
+
+	float total = calculateTotal();
 
 	orderOut += "===== Checkout =====\n";
 
@@ -43,13 +70,17 @@ std::string Order::toString() {
 				orderOut += ")";
 			}
 		}
-
-		orderOut += "\n";
-
 		iterator++;
+		orderOut += "\n";
 	}
 
-	orderOut += "-------------";
+	orderOut += "-------------\n";
+
+	if (twoForOneFlag == true) {
+		orderOut += "2-4-1 discount applied! Savings: \x9c" + std::to_string(twoForOneTotal) + "\n";
+	}
+	
+	orderOut += "Total: \x9c" + std::to_string(total) + "\n";
 
 	return orderOut;
 }

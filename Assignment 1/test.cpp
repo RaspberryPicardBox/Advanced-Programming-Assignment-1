@@ -16,9 +16,13 @@ int main() {
 
 
 
-	order.add(menu.menuList[0]);
-	order.add(menu.menuList[5]);
-	order.add(menu.menuList[10]);
+	order.add(menu.menuList[1]);
+	order.add(menu.menuList[2]);
+	order.add(menu.menuList[3]);
+
+	std::cout << order.toString() << std::endl;
+
+	order.remove(menu.menuList[2]);
 
 	std::cout << order.toString() << std::endl;
 

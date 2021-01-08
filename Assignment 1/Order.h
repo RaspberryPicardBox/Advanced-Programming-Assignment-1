@@ -4,7 +4,8 @@
 #include <list>
 
 class Order : ItemList {
-	int total;
+	float twoForOneTotal = 0;
+	bool twoForOneFlag = false;
 	std::list<Item*> orderList;
 
 public:
@@ -12,7 +13,7 @@ public:
 	void add(Item* selection);
 	void remove(Item* selection);
 
-	int calculateTotal();
+	float calculateTotal();
 	void printReceipt();
 
 	std::string toString();
