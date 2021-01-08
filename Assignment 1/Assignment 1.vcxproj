@@ -23,7 +23,7 @@
     <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Order.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="Takeaway.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="menu.csv" />

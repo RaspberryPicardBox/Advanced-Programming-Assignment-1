@@ -105,11 +105,13 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
 		Item (*item) = *menuIt;
 
+		iterator++;
+
 		bool shareable = (*item).shareable;
 		bool twoForOne = (*item).twoForOne;
 
 		if ((*item).type == "a") {
-			menu += (*item).toString();
+			menu += "(" + std::to_string(iterator) + ") " + (*item).toString();
 			if ((*item).shareable == true) {
 				menu += "(shareable) ";
 			}
@@ -118,8 +120,6 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 			}
 			menu += "\n";
 		}
-
-		iterator++;
 	}
 
 	iterator = 0;
@@ -129,11 +129,11 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
 		Item(*item) = *menuIt;
 
-		if ((*item).type == "m") {
-			menu += (*item).toString() + "\n";
-		}
-
 		iterator++;
+
+		if ((*item).type == "m") {
+			menu += "(" + std::to_string(iterator) + ") " + (*item).toString() + "\n";
+		}
 	}
 
 	iterator = 0;
@@ -143,12 +143,14 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
 		Item(*item) = *menuIt;
 
+		iterator++;
+
 		int volume = (*item).volume;
 		float abv = (*item).abv;
 
 		if ((*item).type == "b") {
 
-			menu += (*item).toString();
+			menu += "(" + std::to_string(iterator) + ") " + (*item).toString();
 
 			if (abv == 0) {
 				menu += "(" + std::to_string((*item).volume) + "ml)\n";
@@ -157,8 +159,6 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 				menu += "(" + std::to_string((*item).volume) + "ml, " + std::to_string((*item).abv) + "% abv)\n";
 			}
 		}
-
-		iterator++;
 	}
 	return menu;
 }

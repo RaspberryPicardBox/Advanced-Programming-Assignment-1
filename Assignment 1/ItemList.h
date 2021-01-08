@@ -6,7 +6,7 @@
 
 class ItemList {
 public:
-	std::list<Item*> items;
+	std::list<Item*> items; // TODO: Make vector
 	bool flag;
 	virtual std::string toString() = 0;
 

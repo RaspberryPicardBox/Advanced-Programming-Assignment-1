@@ -5,16 +5,16 @@
 
 void Order::add(Item* selection){
 	orderList.push_back(selection);
-	std::cout << selection->name << " added to order!\n" << std::endl;
+	std::cout << "\n" << selection->name << " added to order!\n" << std::endl;
 }
 
 void Order::remove(Item* selection) {
 	orderList.remove(selection);
-	std::cout << selection->name << " removed from order!\n" << std::endl;
+	std::cout << "\n" << selection->name << " removed from order!\n" << std::endl;
 }
 
 float Order::calculateTotal() {
-	float total = 0;
+	double localTotal = 0;
 	int twoForOneItems = 0;
 
 	twoForOneFlag = false;
@@ -29,24 +29,26 @@ float Order::calculateTotal() {
 			if (twoForOneItems > 1) {
 				twoForOneFlag = true;
 				twoForOneItems = 0;
-				total += 3.99;
+				localTotal += 3.99;
 				twoForOneTotal += 3.99;
 			}
 		}
 		else {
-			total += (*item)->price;
+			localTotal += (*item)->price;
 		}
 
 	}
 
-	return total;
+	total = localTotal;
+
+	return localTotal;
 }
 
 std::string Order::toString() {
 	std::string orderOut;
 	int iterator = 1;
 
-	float total = calculateTotal();
+	double total = calculateTotal();
 
 	orderOut += "===== Checkout =====\n";
 
@@ -75,12 +77,6 @@ std::string Order::toString() {
 	}
 
 	orderOut += "-------------\n";
-
-	if (twoForOneFlag == true) {
-		orderOut += "2-4-1 discount applied! Savings: \x9c" + std::to_string(twoForOneTotal) + "\n";
-	}
-	
-	orderOut += "Total: \x9c" + std::to_string(total) + "\n";
 
 	return orderOut;
 }

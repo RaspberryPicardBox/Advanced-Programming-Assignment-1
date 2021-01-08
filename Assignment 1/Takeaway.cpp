@@ -58,18 +58,43 @@ int main()
 		}
 		else if (command.compare("add") == 0)
 		{
-			Item* choice; // you need to instantiate this using the menu object!
-			order.add(choice); 
+			int userChoice = std::stoi(parameters[1]);
+
+			if (userChoice <= menu.menuList.size()) {
+				Item* choice = menu.menuList[userChoice - 1];
+				order.add(choice);
+			}
+			else {
+				std::cout << "Sorry, but that item is unavailable." << std::endl;
+			}
+
+
 
 			// You may also wish to implement the ability to add multiple items at once!
 			// e.g. add 1 5 9 
 		}
 		else if (command.compare("remove") == 0)
 		{
+			int userChoice = std::stoi(parameters[1]);
+
+			if (userChoice <= menu.menuList.size()) {
+				Item* choice = menu.menuList[userChoice - 1];
+				order.remove(choice);
+			}
+			else {
+				std::cout << "Sorry, but that item is unavailable." << std::endl;
+			}
 			
 		}
 		else if (command.compare("checkout") == 0)
 		{
+			std::cout << order.toString() << std::endl;
+
+			if (order.twoForOneFlag == true) {
+				std::cout << "2-4-1 discount applied! Savings: \x9c" + std::to_string(order.twoForOneTotal) + "\n" << std::endl;
+			}
+
+			std::cout << "Total: \x9c" + std::to_string(order.total) + "\n" << std::endl;
 
 		}
 		else if (command.compare("help") == 0)
