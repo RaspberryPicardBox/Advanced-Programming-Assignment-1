@@ -20,4 +20,6 @@ int main() {
 	order.add(menu.menuList[5]);
 	order.add(menu.menuList[10]);
 
+	std::cout << order.toString() << std::endl;
+
 }
