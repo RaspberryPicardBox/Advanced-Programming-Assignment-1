@@ -93,7 +93,6 @@ Menu :: Menu(std::string filePath) {
 			}
 			menuList.push_back(item);
 		}
-		ItemList::setItems(menuList);
 	}
 }
 
@@ -103,8 +102,8 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Appetisers----------------\n";
 
-	for (auto& iter: menuList) {
-		Item (*item) = iter;
+	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+		Item (*item) = *menuIt;
 
 		bool shareable = (*item).shareable;
 		bool twoForOne = (*item).twoForOne;
@@ -127,8 +126,8 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Main dishes----------------\n";
 
-	for (auto& iter : menuList) {
-		Item (*item) = iter;
+	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+		Item(*item) = *menuIt;
 
 		if ((*item).type == "m") {
 			menu += (*item).toString() + "\n";
@@ -141,8 +140,8 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 
 	menu += "----------------Beverages----------------\n";
 
-	for (auto& iter : menuList) {
-		Item(*item) = iter;
+	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+		Item(*item) = *menuIt;
 
 		int volume = (*item).volume;
 		float abv = (*item).abv;
