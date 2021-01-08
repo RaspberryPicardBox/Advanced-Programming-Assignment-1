@@ -2,25 +2,17 @@
 #include "Item.h"
 #include <iostream>
 
-void Order::add(int selection){
-	int iterator = 1;
-
-	for (auto& iter : ItemList::getItems()) {
-		Item(*item) = iter;
-		if (iterator == selection) {
-			orderList.push_back(item);
-			break;
-		}
-		iterator++;
-	}
+void Order::add(Item* selection){
+	orderList.push_back(selection);
 }
 
-void Order::remove(int selection) {
-
+void Order::remove(Item* selection) {
+	orderList.remove(selection);
 }
 
 int Order::calculateTotal() {
-	return 0;
+	int total = 0;
+	return total;
 }
 
 std::string Order::toString() {

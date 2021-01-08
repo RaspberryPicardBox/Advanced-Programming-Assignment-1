@@ -5,8 +5,8 @@
 
 
 class Menu : ItemList {
-	std::list<Item*> menuList;
 public:
+	std::list<Item*> menuList;
 	std::string toString();
 	Menu(std::string filePath);
 };

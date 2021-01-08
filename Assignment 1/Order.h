@@ -9,8 +9,8 @@ class Order : ItemList {
 
 public:
 
-	void add(int selection);
-	void remove(int selection);
+	void add(Item* selection);
+	void remove(Item* selection);
 
 	int calculateTotal();
 	void printReceipt();

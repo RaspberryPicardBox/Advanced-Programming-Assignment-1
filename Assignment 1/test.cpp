@@ -14,9 +14,9 @@ int main() {
 
 	std::cout << menu.toString() << std::endl;
 
-	order.add(2);
-	order.add(5);
-	order.add(8);
+
+
+	order.add();
 
 	std::cout << std::endl << order.toString() << "Here" << std::endl;
 }
