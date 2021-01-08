@@ -96,6 +96,27 @@ int main()
 
 			std::cout << "Total: \x9c" + std::to_string(order.total) + "\n" << std::endl;
 
+			std::cout << "Do you want to confirm your oder?\nType 'y' to confirm, or 'n' to go back and modify it." << std::endl;
+
+			getline(cin, userCommand);
+			char* cstr = new char[userCommand.length() + 1];
+			strcpy(cstr, userCommand.c_str());
+
+			char* token;
+			token = strtok(cstr, " ");
+
+			while (token != NULL)
+			{
+				parameters.push_back(token);
+				token = strtok(NULL, " ");
+			}
+
+			string command = parameters[0];
+
+			if (command == "y") {
+				order.printReceipt();
+			}
+
 		}
 		else if (command.compare("help") == 0)
 		{
