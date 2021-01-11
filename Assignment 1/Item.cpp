@@ -13,3 +13,12 @@ std::string Item::toString() {
 
 	return { name + ": " + '\x9c' + priceFixed.str() + ", " + caloriesFixed.str() + " cal " };
 }
+
+bool Beverage::isAlcoholic() {
+	if (abv > 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

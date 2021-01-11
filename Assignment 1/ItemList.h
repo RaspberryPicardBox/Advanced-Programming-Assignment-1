@@ -3,13 +3,14 @@
 #include <string>
 #include <list>
 #include <iterator>
+#include <vector>
 
 class ItemList {
 public:
-	std::list<Item*> items; // TODO: Make vector
+	std::vector<Item*> items;
 	bool flag;
 	virtual std::string toString() = 0;
 
-	std::list<Item*> getItems();
-	void setItems(std::list<Item*> list);
+	std::vector<Item*> getItems();
+	void setItems(std::vector<Item*> list);
 };
