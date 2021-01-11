@@ -15,7 +15,7 @@ public:
 
 	std::string type;
 
-	std::string toString() { return { name + ": " + '\x9c' + std::to_string(price) + ", " + std::to_string(calories) + " cal " }; };
+	std::string toString();
 };
 
 class Appetiser : public Item {

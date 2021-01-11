@@ -20,6 +20,7 @@ Good luck!
 #include "Item.h"
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <cstring>
 

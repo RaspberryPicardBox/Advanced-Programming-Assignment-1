@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <iterator>
+#include <iomanip>
 
 Menu :: Menu(std::string filePath) {
 
@@ -23,6 +24,7 @@ Menu :: Menu(std::string filePath) {
 			Item* item{};
 
 			while (std::getline(stringStream, word, ',')) {
+
 				switch (iterations) {
 
 				case 0:
@@ -46,7 +48,7 @@ Menu :: Menu(std::string filePath) {
 					break;
 
 				case 2:
-					(*item).price = std::stof(word);
+					(*item).price = stod(word);
 					break;
 
 				case 3:
@@ -156,7 +158,10 @@ std::string Menu :: toString() {  // TODO: Rework into a recursive-type function
 				menu += "(" + std::to_string((*item).volume) + "ml)\n";
 			}
 			else {
-				menu += "(" + std::to_string((*item).volume) + "ml, " + std::to_string((*item).abv) + "% abv)\n";
+				std::stringstream abvFixed;
+				abvFixed.precision(3);
+				abvFixed << (*item).abv;
+				menu += "(" + std::to_string((*item).volume) + "ml, " + abvFixed.str() + "% abv)\n";
 			}
 		}
 	}
