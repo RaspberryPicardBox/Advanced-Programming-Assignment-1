@@ -17,6 +17,7 @@ void Order::remove(Item* selection) {
 float Order::calculateTotal() {
 	double localTotal = 0;
 	int twoForOneItems = 0;
+	std::vector<double> twoForOncePrices{};
 
 	twoForOneFlag = false;
 	twoForOneTotal = 0;
@@ -26,12 +27,20 @@ float Order::calculateTotal() {
 
 		if ((*item)->twoForOne == true) {
 			twoForOneItems++;
+			twoForOncePrices.push_back((*item)->price);
 
 			if (twoForOneItems > 1) {
 				twoForOneFlag = true;
 				twoForOneItems = 0;
-				localTotal += 3.99;
-				twoForOneTotal += 3.99;
+				if (twoForOncePrices[0] < twoForOncePrices[1]) {
+					localTotal += twoForOncePrices[0];
+					twoForOneTotal += twoForOncePrices[0];
+				}
+				else {
+					localTotal += twoForOncePrices[1];
+					twoForOneTotal += twoForOncePrices[1];
+				}
+
 			}
 		}
 		else {
@@ -56,7 +65,8 @@ std::string Order::toString() {
 	for (auto& iter : orderList) {
 		Item* (*item) = &iter;
 
-		orderOut += '(' + std::to_string(iterator) + ')' + " " + (*item)->name + ": " + '\x9c' + std::to_string((*item)->price) + ", " + std::to_string((*item)->calories) + " cal";
+		orderOut += '(' + std::to_string(iterator) + ')' + " " + (*item)->toString();
+
 
 		if ((*item)->shareable == true) {
 			orderOut += " (shareable)";
