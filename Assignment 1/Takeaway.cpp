@@ -59,33 +59,35 @@ int main()
 		}
 		else if (command.compare("add") == 0)
 		{
-			int userChoice = std::stoi(parameters[1]);
+			for (int i = 1; i < parameters.size(); i++) {
+				int userChoice = std::stoi(parameters[i]);
 
-			if (userChoice <= menu.menuList.size()) {
-				Item* choice = menu.menuList[userChoice - 1];
-				order.add(choice);
+				if (userChoice <= menu.menuList.size()) {
+					Item* choice = menu.menuList[userChoice - 1];
+					order.add(choice);
+				}
+				else {
+					std::cout << "Sorry, but that item is unavailable." << std::endl;
+				}
 			}
-			else {
-				std::cout << "Sorry, but that item is unavailable." << std::endl;
-			}
-
-
 
 			// You may also wish to implement the ability to add multiple items at once!
 			// e.g. add 1 5 9 
 		}
 		else if (command.compare("remove") == 0)
 		{
-			int userChoice = std::stoi(parameters[1]);
 
-			if (userChoice <= menu.menuList.size()) {
-				Item* choice = menu.menuList[userChoice - 1];
-				order.remove(choice);
-			}
-			else {
-				std::cout << "Sorry, but that item is unavailable." << std::endl;
-			}
-			
+			for (int i = 1; i < parameters.size(); i++) {
+				int userChoice = std::stoi(parameters[i]);
+
+				if (userChoice <= menu.menuList.size()) {
+					Item* choice = menu.menuList[userChoice - 1];
+					order.remove(choice);
+				}
+				else {
+					std::cout << "Sorry, but that item is unavailable." << std::endl;
+				}
+			}			
 		}
 		else if (command.compare("checkout") == 0)
 		{
