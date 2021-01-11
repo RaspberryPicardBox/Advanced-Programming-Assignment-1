@@ -33,6 +33,6 @@ public:
 	float abv = 0;
 	int volume = 0;
 
-	bool isAlcoholic(){};
+	bool isAlcoholic(){}; // TODO: Implement isAlcoholic
 
 };

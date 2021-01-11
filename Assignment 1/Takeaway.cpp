@@ -121,7 +121,15 @@ int main()
 		}
 		else if (command.compare("help") == 0)
 		{
-			
+			std::cout << "----------------------------------------------------------" << std::endl;
+			std::cout << "A takeaway console application for ordering, checking out, and getting a receipt for food." << std::endl << std::endl;
+			std::cout << "Commands:" << std::endl;
+			std::cout << "menu    Displays the menu." << std::endl;
+			std::cout << "add [menuNumber]    Adds an item from the menu to your order based on it's number." << std::endl;
+			std::cout << "remove [menuNumber]    Removes an item from your order based on it's menu number." << std::endl;
+			std::cout << "checkout [y/n]   Shows a summary of your order, and asks to print out the receipt or not." << std::endl;
+			std::cout << "exit   Shuts down the program." << std::endl;
+			std::cout << "----------------------------------------------------------" << std::endl;
 		}
 
 		parameters.clear();
