@@ -84,14 +84,23 @@ std::string Order::toString() {
 
 void Order::printReceipt() {
 	std::ofstream outputFile("receipt.txt");
+	auto orderString = toString();
 
-	outputFile << toString();
+	std::string line;
 
-	if (twoForOneFlag == true) {
-		outputFile << "Savings: \x9c" + std::to_string(twoForOneTotal) + "\n";
+	for (int i = 0; i <= orderString.length(); i++) {
+		if (orderString[i] == '\x9c') {
+			orderString[i] = '£';
+		}
 	}
 
-	outputFile << "Total: \x9c" + std::to_string(total);
+	outputFile << orderString;
+
+	if (twoForOneFlag == true) {
+		outputFile << "Savings: £" + std::to_string(twoForOneTotal) + "\n";
+	}
+
+	outputFile << "Total: £" + std::to_string(total);
 
 	outputFile.close();
 }

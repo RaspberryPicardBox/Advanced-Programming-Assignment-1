@@ -1,7 +1,10 @@
 ===== Checkout =====
-(1) Nachos: œ4.990000, 600 cal (shareable)
-(2) Red wine: œ4.000000, 170 cal(175 ml, 12.500000% abv)
-(3) Water: œ1.500000, 0 cal(330 ml)
-(4) Mac & cheese: œ7.990000, 850 cal
+(1) Buffalo wings: £3.990000, 450 cal (2-4-1)
+(2) Buffalo wings: £3.990000, 450 cal (2-4-1)
+(3) Buffalo wings: £3.990000, 450 cal (2-4-1)
+(4) Buffalo wings: £3.990000, 450 cal (2-4-1)
+(5) Buffalo wings: £3.990000, 450 cal (2-4-1)
+(6) Buffalo wings: £3.990000, 450 cal (2-4-1)
 -------------
-Total: œ18.480000
+Savings: £11.970000
+Total: £11.970000
