@@ -98,7 +98,7 @@ Menu :: Menu(std::string filePath) {
 	}
 }
 
-std::string Menu :: toString() {  // TODO: Rework into a recursive-type function. Take in type, print out until done with type
+std::string Menu :: toString() { // TODO: Add commands to sort the menu by item price
 	int iterator = 0;
 	std::string menu;
 
