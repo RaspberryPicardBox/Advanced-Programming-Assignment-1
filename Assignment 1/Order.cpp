@@ -2,6 +2,7 @@
 #include "Item.h"
 #include <iostream>
 #include<vector>
+#include <fstream>
 
 void Order::add(Item* selection){
 	orderList.push_back(selection);
@@ -82,5 +83,15 @@ std::string Order::toString() {
 }
 
 void Order::printReceipt() {
+	std::ofstream outputFile("receipt.txt");
 
+	outputFile << toString();
+
+	if (twoForOneFlag == true) {
+		outputFile << "Savings: \x9c" + std::to_string(twoForOneTotal) + "\n";
+	}
+
+	outputFile << "Total: \x9c" + std::to_string(total);
+
+	outputFile.close();
 }

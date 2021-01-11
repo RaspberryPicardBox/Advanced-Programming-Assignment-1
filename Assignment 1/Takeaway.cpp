@@ -111,7 +111,7 @@ int main()
 				token = strtok(NULL, " ");
 			}
 
-			string command = parameters[0];
+			string command = parameters[1];
 
 			if (command == "y") {
 				order.printReceipt();
