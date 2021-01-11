@@ -24,9 +24,6 @@
     <ClCompile Include="Order.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Takeaway.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

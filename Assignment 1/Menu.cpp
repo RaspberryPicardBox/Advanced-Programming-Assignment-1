@@ -19,7 +19,7 @@ Menu :: Menu(std::string filePath) {
 		while (std::getline(menuFile, line)) {
 			std::istringstream stringStream(line);
 			
-			int iterations = 0;
+			int iterations = 0; // Iterations keeps track of which column we're in
 
 			Item* item{};
 
@@ -40,7 +40,6 @@ Menu :: Menu(std::string filePath) {
 						item = new Beverage;
 						(*item).type = word;
 					}
-					
 					break;
 
 				case 1:
@@ -93,7 +92,7 @@ Menu :: Menu(std::string filePath) {
 				}
 				iterations++;
 			}
-			menuList.push_back(item);
+			items.push_back(item);
 		}
 	}
 }
@@ -104,13 +103,10 @@ std::string Menu :: toString() { // TODO: Add commands to sort the menu by item 
 
 	menu += "----------------Appetisers----------------\n";
 
-	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+	for (std::vector<Item*>::iterator menuIt = items.begin(); menuIt != items.end(); ++menuIt) {
 		Item (*item) = *menuIt;
 
 		iterator++;
-
-		bool shareable = (*item).shareable;
-		bool twoForOne = (*item).twoForOne;
 
 		if ((*item).type == "a") {
 			menu += "(" + std::to_string(iterator) + ") " + (*item).toString();
@@ -128,7 +124,7 @@ std::string Menu :: toString() { // TODO: Add commands to sort the menu by item 
 
 	menu += "----------------Main dishes----------------\n";
 
-	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+	for (std::vector<Item*>::iterator menuIt = items.begin(); menuIt != items.end(); ++menuIt) {
 		Item(*item) = *menuIt;
 
 		iterator++;
@@ -142,7 +138,7 @@ std::string Menu :: toString() { // TODO: Add commands to sort the menu by item 
 
 	menu += "----------------Beverages----------------\n";
 
-	for (std::vector<Item*>::iterator menuIt = menuList.begin(); menuIt != menuList.end(); ++menuIt) {
+	for (std::vector<Item*>::iterator menuIt = items.begin(); menuIt != items.end(); ++menuIt) {
 		Item(*item) = *menuIt;
 
 		iterator++;
@@ -158,7 +154,7 @@ std::string Menu :: toString() { // TODO: Add commands to sort the menu by item 
 				menu += "(" + std::to_string((*item).volume) + "ml)\n";
 			}
 			else {
-				std::stringstream abvFixed;
+				std::stringstream abvFixed; // Setting the precision of abv to remove 0s
 				abvFixed.precision(3);
 				abvFixed << (*item).abv;
 				menu += "(" + std::to_string((*item).volume) + "ml, " + abvFixed.str() + "% abv)\n";

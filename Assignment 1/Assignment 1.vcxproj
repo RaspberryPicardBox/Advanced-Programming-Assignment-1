@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Takeaway.cpp" />

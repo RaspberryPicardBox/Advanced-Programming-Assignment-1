@@ -7,7 +7,7 @@
 
 class Menu : ItemList {
 public:
-	std::vector<Item*> menuList;
+	std::vector<Item*> items;
 	std::string toString();
 	Menu(std::string filePath);
 };

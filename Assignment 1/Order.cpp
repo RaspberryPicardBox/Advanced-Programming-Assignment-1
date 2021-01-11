@@ -32,7 +32,7 @@ float Order::calculateTotal() {
 			if (twoForOneItems > 1) {
 				twoForOneFlag = true;
 				twoForOneItems = 0;
-				if (twoForOncePrices[0] < twoForOncePrices[1]) {
+				if (twoForOncePrices[0] < twoForOncePrices[1]) { // Checking to see which of the two products is the cheapest
 					localTotal += twoForOncePrices[0];
 					twoForOneTotal += twoForOncePrices[0];
 				}
@@ -40,7 +40,7 @@ float Order::calculateTotal() {
 					localTotal += twoForOncePrices[1];
 					twoForOneTotal += twoForOncePrices[1];
 				}
-
+				twoForOncePrices.clear();
 			}
 		}
 		else {
@@ -49,7 +49,7 @@ float Order::calculateTotal() {
 
 	}
 
-	total = localTotal;
+	total = localTotal; // Updating the global total variable for access outside of being called again
 
 	return localTotal;
 }
@@ -98,7 +98,7 @@ void Order::printReceipt() {
 
 	std::string line;
 
-	for (int i = 0; i <= orderString.length(); i++) {
+	for (int i = 0; i <= orderString.length(); i++) { // Recplacing the escape character used within the C++ console with a standard Unicode symbol
 		if (orderString[i] == '\x9c') {
 			orderString[i] = '£';
 		}

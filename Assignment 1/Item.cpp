@@ -3,7 +3,7 @@
 #include<iomanip>
 
 std::string Item::toString() {
-	std::stringstream priceFixed;
+	std::stringstream priceFixed; // Dropping the precision on the floats to remove uneccesary 0s
 	priceFixed.precision(3);
 	priceFixed << price;
 

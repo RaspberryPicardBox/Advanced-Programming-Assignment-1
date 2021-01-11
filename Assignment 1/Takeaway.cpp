@@ -62,26 +62,22 @@ int main()
 			for (int i = 1; i < parameters.size(); i++) {
 				int userChoice = std::stoi(parameters[i]);
 
-				if (userChoice <= menu.menuList.size()) {
-					Item* choice = menu.menuList[userChoice - 1];
+				if (userChoice <= menu.items.size()) {
+					Item* choice = menu.items[userChoice - 1];
 					order.add(choice);
 				}
 				else {
 					std::cout << "Sorry, but that item is unavailable." << std::endl;
 				}
 			}
-
-			// You may also wish to implement the ability to add multiple items at once!
-			// e.g. add 1 5 9 
 		}
 		else if (command.compare("remove") == 0)
 		{
-
 			for (int i = 1; i < parameters.size(); i++) {
 				int userChoice = std::stoi(parameters[i]);
 
-				if (userChoice <= menu.menuList.size()) {
-					Item* choice = menu.menuList[userChoice - 1];
+				if (userChoice <= menu.items.size()) {
+					Item* choice = menu.items[userChoice - 1];
 					order.remove(choice);
 				}
 				else {
@@ -101,6 +97,8 @@ int main()
 
 			std::cout << "Do you want to confirm your oder?\nType 'y' to confirm, or 'n' to go back and modify it." << std::endl;
 
+			// Re-getting user input here for confirmation without leaving the checkout command
+			// Would be better in a function, but would require changing this file
 			getline(cin, userCommand);
 			char* cstr = new char[userCommand.length() + 1];
 			strcpy(cstr, userCommand.c_str());
