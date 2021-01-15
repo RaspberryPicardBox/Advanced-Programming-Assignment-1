@@ -4,12 +4,12 @@
 #include<vector>
 #include <fstream>
 
-void Order::add(Item* selection){
+void Order::add(Item* selection){ // O(1)
 	items.push_back(selection);
 	std::cout << "\n" << selection->name << " added to order!\n" << std::endl;
 }
 
-void Order::remove(Item* selection) {
+void Order::remove(Item* selection) { // O(1)
 	int loopIt = 0;
 	for (auto iter : items) {
 		Item* (*item) = &iter;
@@ -23,7 +23,7 @@ void Order::remove(Item* selection) {
 	std::cout << "\n" << selection->name << " removed from order!\n" << std::endl;
 }
 
-float Order::calculateTotal() {
+float Order::calculateTotal() { // O(n)
 	double localTotal = 0;
 	int twoForOneItems = 0;
 	std::vector<double> twoForOncePrices{};
@@ -63,7 +63,7 @@ float Order::calculateTotal() {
 	return localTotal;
 }
 
-std::string Order::toString() {
+std::string Order::toString() { // O(n)
 	std::string orderOut;
 	int iterator = 1;
 
@@ -101,7 +101,7 @@ std::string Order::toString() {
 	return orderOut;
 }
 
-void Order::printReceipt() {
+void Order::printReceipt() { // O(n)
 	std::ofstream outputFile("receipt.txt");
 	auto orderString = toString();
 

@@ -7,7 +7,7 @@
 #include <iterator>
 #include <iomanip>
 
-Menu :: Menu(std::string filePath) {
+Menu :: Menu(std::string filePath) { // O(n^2)
 
 	std::vector<std::string> attributes;
 
@@ -97,6 +97,7 @@ Menu :: Menu(std::string filePath) {
 	}
 }
 
+// O(n)
 std::string Menu :: toString() { // TODO: Add commands to sort the menu by item price
 	int iterator = 0;
 	std::string menu;
