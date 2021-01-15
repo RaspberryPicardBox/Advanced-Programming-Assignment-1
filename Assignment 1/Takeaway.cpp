@@ -76,8 +76,8 @@ int main()
 			for (int i = 1; i < parameters.size(); i++) {
 				int userChoice = std::stoi(parameters[i]);
 
-				if (userChoice <= menu.items.size()) {
-					Item* choice = menu.items[userChoice - 1];
+				if (userChoice <= order.items.size()) {
+					Item* choice = order.items[userChoice - 1];
 					order.remove(choice);
 				}
 				else {

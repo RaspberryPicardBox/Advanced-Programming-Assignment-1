@@ -4,12 +4,12 @@
 #include <list>
 
 class Order : ItemList {
-	std::list<Item*> orderList;
-
 public:
 	double total = 0;
 	double twoForOneTotal = 0;
 	bool twoForOneFlag = false;
+
+	std::vector<Item*> items;
 
 	void add(Item* selection);
 	void remove(Item* selection);

@@ -5,12 +5,21 @@
 #include <fstream>
 
 void Order::add(Item* selection){
-	orderList.push_back(selection);
+	items.push_back(selection);
 	std::cout << "\n" << selection->name << " added to order!\n" << std::endl;
 }
 
 void Order::remove(Item* selection) {
-	orderList.remove(selection);
+	int loopIt = 0;
+	for (auto iter : items) {
+		Item* (*item) = &iter;
+
+		if ((*item) == selection) {
+			items.erase(items.begin() + loopIt);
+			break;
+		}
+		loopIt++;
+	}
 	std::cout << "\n" << selection->name << " removed from order!\n" << std::endl;
 }
 
@@ -22,7 +31,7 @@ float Order::calculateTotal() {
 	twoForOneFlag = false;
 	twoForOneTotal = 0;
 
-	for (auto& iter : orderList) {
+	for (auto& iter : items) {
 		Item* (*item) = &iter;
 
 		if ((*item)->twoForOne == true) {
@@ -62,7 +71,7 @@ std::string Order::toString() {
 
 	orderOut += "===== Checkout =====\n";
 
-	for (auto& iter : orderList) {
+	for (auto& iter : items) {
 		Item* (*item) = &iter;
 
 		orderOut += '(' + std::to_string(iterator) + ')' + " " + (*item)->toString();
